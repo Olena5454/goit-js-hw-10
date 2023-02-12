@@ -97,19 +97,20 @@ function createMarkupList({ flags, name }) {
 }
 
 function createMarkupItem({ name, flags, capital, population, languages }) {
-  const langs = Object.values(languages).join(',');
   const firstCapital = capital[0];
   return `
   <ul class="country-info-list" style="list-style-type:none; margin-left:0; padding-left:0;">
   <li class="country-item">
   <p class="country-info" style="display:flex; gap:20px; font-size:24px;">
-    <img src="${flags.svg}" alt="${flags.alt}" width="60px" height="40px" class="country-flag">
+    <img src="${flags.svg}" alt="${
+    flags.alt
+  }" width="60px" height="40px" class="country-flag">
     <span class="country-name"><b>${name.official}</b></span>
     </p>
   </li>
 <li><b>Capital: </b>${firstCapital}</li>
 <li><b>Population: </b>${population}</li>
-<li><b>Languages: </b>${langs}</li>
+<li><b>Languages: </b>${Object.values(languages).join(', ')}</li>
   </ul>
   `;
 }
